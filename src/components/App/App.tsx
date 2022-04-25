@@ -2,15 +2,14 @@ import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {store} from '../../store/index';
-import {Layout} from '../Layout/Layout';
+import {AppRoutes} from '../../router/routes';
+import './App.css';
 
 function App() {
   return (
      <Provider store={store}>
         <BrowserRouter>
-         <main>
-              <Layout />
-          </main>
+            <AppRoutes />
         </BrowserRouter>
       </Provider>
   );

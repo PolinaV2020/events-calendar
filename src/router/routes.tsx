@@ -6,17 +6,15 @@ import {Event} from '../pages/Event/Event';
 import {AppLayout} from '../components/Layout/AppLayout';
 import {RequireAuth} from '../hoc/RequireAuth';
 
-export interface Route {
-    path?: string,
-    element?: React.ReactElement | null,
-}
-
-
 export const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<AppLayout/>}>
-                <Route index element={<HomePage />} />
+                <Route index element={
+                    <RequireAuth>
+                        <HomePage />
+                    </RequireAuth>
+                 } />
                 <Route path="event" element={
                     <RequireAuth>
                         <Event />

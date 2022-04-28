@@ -1,12 +1,11 @@
 import React, {FC} from 'react';
-import {useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {Row, Menu} from 'antd';
-import {AuthActionCreators} from '../../store/reducers/Auth/action-creators';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {useActions} from '../../hooks/useActions';
 
 export const AppHeader: FC = () => {
-  const dispatch = useDispatch();
+  const {logout} = useActions();
   const {isAuth, user} = useTypedSelector(state => state.auth)
 
   return (
@@ -28,7 +27,7 @@ export const AppHeader: FC = () => {
                 </>
               ) : (
                 <Menu mode="horizontal" theme="dark" selectable={false}>
-                     <Menu.Item key={1} onClick={() => dispatch(AuthActionCreators.logout())}>
+                     <Menu.Item key={1} onClick={logout}>
                          <NavLink to="/login">Log in</NavLink>
                      </Menu.Item>
                 </Menu>

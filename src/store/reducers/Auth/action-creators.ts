@@ -8,6 +8,7 @@ export const AuthActionCreators = {
   setIsAuth: (isAuth: boolean): SetAuthAction => ({type: AuthActionEnum.SET_AUTH, payload: isAuth}),
   setIsLoading: (isLoading: boolean): SetIsLoadingAction => ({type: AuthActionEnum.SET_IS_LOADING, payload: isLoading}),
   setError: (error: string): SetErrorAction => ({type: AuthActionEnum.SET_ERROR, payload: error}),
+
   login: (username: string, password: string) => async (dispatch: AppDispatch) => {
     try {
       dispatch(AuthActionCreators.setIsLoading(true))
@@ -26,6 +27,7 @@ export const AuthActionCreators = {
       dispatch(AuthActionCreators.setError('Login error'))
     }
   },
+  
   logout: () => async (dispatch: AppDispatch) => {
       localStorage.removeItem('auth');
       localStorage.removeItem('username');

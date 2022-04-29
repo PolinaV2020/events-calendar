@@ -2,7 +2,7 @@ import React from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
 import {HomePage} from '../pages/HomePage/HomePage';
 import {Login} from '../pages/Login/Login';
-import {Event} from '../pages/Event/Event';
+import {Events} from '../pages/Events/Events';
 import {AppLayout} from '../components/Layout/AppLayout';
 import {RequireAuth} from '../hoc/RequireAuth';
 
@@ -22,7 +22,7 @@ export const AppRoutes = () => {
                     path="event"
                     element={
                         <RequireAuth>
-                            <Event />
+                            <Events />
                         </RequireAuth>
                     }
                 />

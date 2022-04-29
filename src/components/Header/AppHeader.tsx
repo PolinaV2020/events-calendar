@@ -18,7 +18,7 @@ export const AppHeader: FC = () => {
                             <NavLink to="/">Home page</NavLink>
                         </Menu.Item>
                         <Menu.Item key={2}>
-                            <NavLink to="/event">Event</NavLink>
+                            <NavLink to="/event">Events</NavLink>
                         </Menu.Item>
                         <Menu.Item key={3}>
                             <NavLink to="/login">Log out</NavLink>

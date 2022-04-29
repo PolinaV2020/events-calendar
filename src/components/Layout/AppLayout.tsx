@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
-import {NavLink} from 'react-router-dom';
 import {Outlet} from 'react-router-dom';
-import {Layout, Row, Menu} from 'antd';
+import {Layout} from 'antd';
 import {AppHeader} from '../Header/AppHeader';
 
 export const AppLayout: FC = () => {
@@ -16,5 +15,3 @@ export const AppLayout: FC = () => {
         </Layout>
     );
 };
-
-

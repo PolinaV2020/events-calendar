@@ -1,10 +1,16 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import {Layout, Row, Button, Modal} from 'antd';
 import {EventsCalendar} from '../../components/EventsCalendar/EventsCalendar';
 import {EventForm} from '../../components/EventForm/EventForm';
+import {useActions} from '../../hooks/useActions';
 
 export const Events: FC = () => {
+    const {fetchGuests} = useActions();
     const [isModalVisible, setIsModalVisible] = useState(false);
+
+    useEffect(() => {
+        fetchGuests();
+    });
 
     return (
         <Layout>

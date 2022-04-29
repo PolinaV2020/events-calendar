@@ -1,7 +1,7 @@
-import axios from 'axios';
 import {User} from '../../../models/User';
 import {AuthActionEnum, SetAuthAction, SetUserAction, SetIsLoadingAction, SetErrorAction} from './types';
 import {AppDispatch} from '../../index';
+import UserService from '../../../api/UserService';
 
 export const AuthActionCreators = {
     setUser: (user: User): SetUserAction => ({type: AuthActionEnum.SET_USER, payload: user}),
@@ -15,7 +15,7 @@ export const AuthActionCreators = {
     login: (username: string, password: string) => async (dispatch: AppDispatch) => {
         try {
             dispatch(AuthActionCreators.setIsLoading(true));
-            const usersData = await axios.get<User[]>('./users.json');
+            const usersData = await UserService.getUsers();
             const mockUser = usersData.data.find((user) => user.username === username && user.password === password);
             if (mockUser) {
                 localStorage.setItem('auth', 'true');

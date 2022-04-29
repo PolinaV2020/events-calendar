@@ -15,4 +15,15 @@ export const EventsActionCreators = {
             console.log('Users fetching error');
         }
     },
+    createEvent: (event: Event) => async (dispatch: AppDispatch) => {
+        try {
+            const events = localStorage.getItem('events') || '[]';
+            const json = JSON.parse(events) as Event[];
+            json.push(event);
+            dispatch(EventsActionCreators.setEvents(json));
+            localStorage.setItem('events', JSON.stringify(json));
+        } catch (e) {
+            console.log('Creating event error');
+        }
+    },
 };

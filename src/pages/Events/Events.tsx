@@ -7,23 +7,27 @@ import {useActions} from '../../hooks/useActions';
 import {Event} from '../../models/Event';
 
 export const Events: FC = () => {
-    const {fetchGuests, createEvent} = useActions();
+    const {fetchGuests, fetchEvents, createEvent} = useActions();
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const {guests} = useTypedSelector((state) => state.event);
+    const {guests, events} = useTypedSelector((state) => state.event);
+    const {user, isAuth} = useTypedSelector((state) => state.auth);
+
+    console.log('isAuth', isAuth);
 
     useEffect(() => {
         fetchGuests();
+        fetchEvents(user.username);
     }, []);
 
     const handleModal = (event: Event) => {
-        createEvent(event);
         setIsModalVisible(false);
+        createEvent(event);
     };
 
     return (
         <Layout>
-            <EventsCalendar events={[]} />
+            <EventsCalendar events={events} />
             <Row justify="center" align="middle">
                 <Button type="primary" size="large" onClick={() => setIsModalVisible(true)}>
                     Add event

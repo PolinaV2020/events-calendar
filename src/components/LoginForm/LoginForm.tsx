@@ -24,7 +24,11 @@ export const LoginForm: FC = () => {
             </Form.Item>
 
             <Form.Item label="Password" name="password" rules={[rules.required('Please input your password!')]}>
-                <Input.Password value={password} onChange={(event) => setPassword(event.target.value)} />
+                <Input.Password
+                    autoComplete="password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                />
             </Form.Item>
 
             <Form.Item wrapperCol={{offset: 8, span: 16}}>
